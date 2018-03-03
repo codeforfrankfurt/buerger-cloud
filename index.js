@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const MeasurementHandler = require('./MeasurementHandler')
+const DataReader = require('./DataReader')
 
 const app = express()
 app.use(bodyParser.urlencoded({extended: false}))
@@ -14,7 +15,8 @@ app.post('/push-sensor-data', (req, res) => {
 })
 
 app.get('/data/:lat1/:lon1/:lat2/:lon2/:from/:to', (req, res) => {
-  res.json('not yet implemented')
+  DataReader.find(req.params)
+    .then(data => res.json(data))
 })
 
 app.listen(process.env.PORT || 8080)
