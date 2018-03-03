@@ -26,7 +26,7 @@ app.get('/data/:lat1/:lon1/:lat2/:lon2/:from/:to', (req, res) => {
 
 app.get('/version', function (req, res) {
     res.json('0.1')
-})
+});
 
 app.get('/data/fake', function (req, res) {
     var latMin = 50.225574;
@@ -51,6 +51,7 @@ app.get('/data/fake', function (req, res) {
                 ]
             },
             "properties": {
+                "id": "" + parseInt(i+1) + "",
                 "PM10": parseInt(Math.random()*(p1Max-p1Min+1)+p1Min),
                 "PM2.5": parseInt(Math.random()*(p2Max-p2Min+1)+p2Min)
             }
