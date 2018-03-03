@@ -17,6 +17,7 @@ app.post('/push-sensor-data', (req, res) => {
 app.get('/data/:lat1/:lon1/:lat2/:lon2/:from/:to', (req, res) => {
   DataReader.find(req.params)
     .then(data => res.json(data))
+    .catch(console.error)
 })
 
 app.listen(process.env.PORT || 8080)
