@@ -17,11 +17,13 @@ function filterRelevant(file, box, dateTimeRange) {
 
 module.exports = {
   find: params => {
+    const type = 'FeatureCollection'
     const box = [params.lat1, params.lon1, params.lat2, params.lon2]
     const dateTimeRange = {from: params.from, to: params.to}
+    const properties = {box, dateTimeRange}
     return fs.readdir(dataPath)
       .then(files => files.filter(file => filterRelevant(file, box, dateTimeRange)))
       .then(files => files.map(file => JSON.parse(fs.readFileSync(path.join(dataPath, file)).toString())))
-      .then(points => ({box, dateTimeRange, points}))
+      .then(features => ({type, features, properties: {box, dateTimeRange}}))
   }
 }
