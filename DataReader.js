@@ -1,19 +1,9 @@
-const fs = require('fs')
+const fs = require('fs.promised')
 
 module.exports = {
   find: params => {
-    return new Promise((fulfil, reject) => {
-      fs.readdir(__dirname + '/data', (err, files) => {
-        if (err) {
-          reject(err)
-        } else {
-          fulfil(files.map(file => {
-            if (file.indexOf('.') !== 0) {
-              return JSON.parse(fs.readFileSync(__dirname + '/data/' + file).toString())
-            }
-          }).filter(Boolean))
-        }
-      })
-    })
+    return fs.readdir(__dirname + '/data')
+      .then(files => files.filter(file => file.indexOf('.') !== 0))
+      .then(files => files.map(file => JSON.parse(fs.readFileSync(__dirname + '/data/' + file).toString())))
   }
 }
