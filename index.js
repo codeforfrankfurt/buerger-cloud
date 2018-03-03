@@ -1,5 +1,5 @@
 const express = require('express')
-const cors = require('express-cors')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const MeasurementHandler = require('./MeasurementHandler')
 const DataReader = require('./DataReader')
@@ -7,7 +7,7 @@ const DataReader = require('./DataReader')
 const app = express()
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-app.use(cors({allowedOrigins: ['*']}))
+app.use(cors())
 
 app.get('/health', (req, res) => res.json('ok'))
 
