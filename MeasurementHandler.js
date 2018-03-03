@@ -12,12 +12,16 @@ function typeMapper(value) {
 function prepare(data) {
   const properties = {}
 
-  data.sensordatavalues.forEach(info => {
-    const key = typeMapper(info.value_type)
-    if (key) {
-      properties[key] = info.value
-    }
-  })
+  if (data.sensordatavalues) {
+    data.sensordatavalues.forEach(info => {
+      const key = typeMapper(info.value_type)
+      if (key) {
+        properties[key] = info.value
+      }
+    })
+  } else {
+    console.error('No sensordatavalues', data)
+  }
 
   return {
     type: 'Feature',
