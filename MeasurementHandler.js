@@ -1,5 +1,3 @@
-const fs = require('fs')
-
 const mapping = {
   P1: 'PM10',
   P2: 'PM2.5'
@@ -37,10 +35,8 @@ function prepare(data) {
 }
 
 module.exports = {
-  create: data => {
-    const position = data.location ? data.location.latitude + ':' + data.location.longitude : '0:0'
-    const timestamp = data.timestamp || new Date().toUTCString()
-    const id = data.id || +new Date()
-    fs.writeFile(__dirname + '/data/' + position + ':' + timestamp + ':' + id, JSON.stringify(prepare(data)), () => {})
+  create: (data, model) => {
+    const measurements = model.db.collection('Measurement')
+    measurements.insert(prepare(data), () => {})
   }
 }
