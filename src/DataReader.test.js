@@ -14,7 +14,7 @@ function collectionMock(error, features) {
 function modelMock(collection) {
   return {
     db: {
-      collection: name => collection
+      collection: name => name === 'Measurement' ? collection : null
     }
   }
 }

@@ -50,7 +50,7 @@ module.exports = {
       features.push(point)
     }
 
-    return {
+    return Promise.resolve({
       'type': 'FeatureCollection',
       'features': features,
       'properties': {
@@ -60,6 +60,6 @@ module.exports = {
           'to': '2018-03-03T15:00:00'
         }
       }
-    }
+    })
   }
 }
