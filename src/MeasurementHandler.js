@@ -18,7 +18,7 @@ function prepare(data) {
       }
     })
   } else {
-    console.error('No sensordatavalues', data)
+    console.error('No sensordatavalues', data)  // eslint-disable-line no-console
   }
 
   return {
