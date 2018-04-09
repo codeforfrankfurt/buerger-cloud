@@ -1,14 +1,9 @@
-Buerger-Cloud
+Buerger-Cloud for Air Quality
 =
 
-Keep your movement data private!
+Keep your air quality measurements and/or movement data private as long as you want!
 
-Instead of automatically sending movement data to your provider, you can store it
-in the Buerger-Cloud and then give it (or part of it) to those providers you want.
+This project was created to store data from (mobile (fine dust)) sensors via LoRaWAN
+and to serve this data in anonymous form to a frontend visualizing it.
 
-This project was created to store data from mobile fine dust sensors via LoRaWAN
-and to serve this data in anonymoud form to a frontend visualizing it.
-
-It was created at the Global Open Data Hackathon in Frankfurt, Germany 2018.
-
-You find more information at https://hackmd.io/s/Hk2OEBldM
+You can find more information at https://hackmd.io/s/Hk2OEBldM
